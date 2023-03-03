@@ -23,7 +23,7 @@ AutoTable <- function(TableName,...){
     # print(useData)
     # print(as.data.frame(do.call(cbind, list(...))))
     df <- as.data.frame(do.call(cbind, list(...)))
-    useData <- rbind(useData,df)
+    useData <- rbind(df,useData) # 要讓新的資料可以放在上面
     saveRDS(useData,file = FilePath)
   }
   
