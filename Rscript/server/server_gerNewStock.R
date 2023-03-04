@@ -24,6 +24,7 @@ loading_NewStock <- eventReactive(input$MakeNewStock_table,{
   df <- readRDS('data/NewStock.rds')
   return(df)
 })
+
 ###### output #################
 ## output 上傳資料後會出來的字
 output$Button_NewStock <- renderText({

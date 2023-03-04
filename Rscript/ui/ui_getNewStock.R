@@ -6,7 +6,7 @@ NewStock_df <- if(!file.exists("data/NewStock.rds")){
 }else{
  readRDS("data/NewStock.rds") 
 }
-readRDS("data/NewStock.rds")
+
 fluidPage(
   column(4,
     fluidRow(
