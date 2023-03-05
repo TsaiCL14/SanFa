@@ -6,15 +6,16 @@ AutoTable('StockPrice')
 
 ## 當按了上傳會做的事情
 SP_goText <- eventReactive(input$StockPrice_go,{
-  if(input$StokPrice_price == 0|input$StokPrice_cost == 0){
+  if(input$StockPrice_price == 0){
     print('未填寫完成')
   }else{
     AutoTable(TableName = 'StockPrice',
-              '日期' = input$StcokPrice_date,
-              '品項' = input$StcokPrice_item,
-              '售價' = input$StcokPrice_price,
-              '成本' = input$StcokPrice_cost,
-              '備註' = input$StcokPrice_remark)
+              '日期' = paste0(input$StockPrice_date),
+              '品項' = input$StockPrice_item,
+              '售價' = input$StockPrice_price,
+              '成本' = input$StockPrice_cost,
+              '備註' = input$StockPrice_remark)
+    print(input$StockPrice_date)
     print("upload")
   }
   
@@ -49,6 +50,7 @@ observeEvent(input$StockPrice_go,{ # 用按鈕反應要更新的內容
   ### 需要隨時更新複選資料中會多的東西
   df <- readRDS('data/NewStock.rds')
   updateSelectizeInput(session,inputId = 'StockPrice_item',choices = unique(df$品項), server = TRUE,selected = '')
-  updateNumericInput(session,inputId = 'StokPrice_price',value = 0)
-  updateNumericInput(session,inputId = 'StokPrice_cost',value = 0)
+  updateNumericInput(session,inputId = 'StockPrice_price',value = 0,min = 0,max = Inf)
+  updateNumericInput(session,inputId = 'StockPrice_cost',value = 0,min = 0,max = Inf)
+  updateTextAreaInput(session,inputId = 'StockPrice_remark',placeholder = '寫下你想為這個品項紀錄的事項！' )
 })
