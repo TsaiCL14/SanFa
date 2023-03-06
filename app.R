@@ -22,14 +22,14 @@ ui <- fluidPage(
                        source("Rscript/ui/ui_getNewStock.R",local = TRUE)$value
                ),
                tabPanel(title = '品項的價格',
-                        source('Rscript/ui/ui_getPrice.R',local = TRUE)$value
+                       source('Rscript/ui/ui_getPrice.R',local = TRUE)$value
                  
                ),
-               tabPanel(title = '進貨'
-                 
+               tabPanel(title = '進貨',
+                        source('Rscript/ui/ui_getPurchase.R',local = TRUE)$value
                ),
-               tabPanel(title = '出售'
-                 
+               tabPanel(title = '出售',
+                        source('Rscript/ui/ui_getSale.R',local = TRUE)$value
                )
     ) # navbarPage
   ) # shinyUI
