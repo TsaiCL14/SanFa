@@ -19,7 +19,7 @@ text_Reactive <-  eventReactive(input$MakeNewStock_table,{
 })
 
 ## 可以不斷的更新DT讀取資料表 
-loading_NewStock <- eventReactive(input$MakeNewStock_table,{
+loading_NewStock <- eventReactive(input$MakeNewStock_go,{
   ## 可以讀資料的部分
   df <- readRDS('data/NewStock.rds')
   return(df)
@@ -27,12 +27,12 @@ loading_NewStock <- eventReactive(input$MakeNewStock_table,{
 
 ###### output #################
 ## output 上傳資料後會出來的字
-output$Button_NewStock <- renderText({
+output$Button_goText <- renderText({
   text_Reactive()
 })
 ## output 右邊的資料表
 output$NewStock_table <- renderDataTable({
-  df <- if(input$MakeNewStock_table == 0){
+  df <- if(input$MakeNewStock_go == 0){
     readRDS('data/NewStock.rds')
   }else{
     loading_NewStock()
@@ -41,7 +41,7 @@ output$NewStock_table <- renderDataTable({
 })
 
 ######## reset input ####################
-observeEvent(input$MakeNewStock_table,{ # 用按鈕反應要更新的內容
+observeEvent(input$MakeNewStock_go,{ # 用按鈕反應要更新的內容
   ### 需要隨時更新複選資料中會多的東西
   df <- readRDS('data/NewStock.rds')
   updateSelectizeInput(session,inputId = 'NewStock_type',choices = unique(df$種類), server = TRUE,selected = '')

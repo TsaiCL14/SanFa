@@ -41,7 +41,7 @@ ui <- fluidPage(
 ############### server #############
 server <- function(input, output, session){
   source('Rscript/server/server_gerNewStock.R',local = TRUE)$value
-  source('Rscript/server/server_getPrice.R',local = TRUE)$value
+  # source('Rscript/server/server_getPrice.R',local = TRUE)$value
 } # close server 
 
 
