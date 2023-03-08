@@ -23,7 +23,7 @@ fluidPage(
          ## set 品項 input 
          div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
              selectizeInput('Purchase_type', '品項的種類', 
-                            choices = '',
+                            choices = '',selected = '',
                             options = list(maxOptions = 5, 
                                            create = TRUE,
                                            placeholder = '挑選一個或新增')
@@ -32,12 +32,31 @@ fluidPage(
          br(),
          ## set 品項名稱 input
          div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
-             selectizeInput('Purchase_item', '品項名稱',
-                            choices = unique(NewStock_df$品項),
-                            selected = '',  
-                            options = list(creat = TRUE,
-                                           placeholder = '挑選一個或新增')
-             ) 
+             conditionalPanel(
+               condition = 'input.Purchase_type == "磁磚"',
+               selectizeInput('Purchase_item','廠商名稱',
+                              choices = '',selected = '',
+                              options = list(creat = TRUE,
+                                             placeholder = '挑選一個或新增')
+                              ),
+               selectizeInput('Purchase_item', '編號',
+                              choices = unique(NewStock_df$品項),
+                              selected = '',
+                              options = list(creat = TRUE,
+                                             placeholder = '挑選一個或新增')
+
+                              )
+             ),
+             conditionalPanel(
+               condition = 'input.Purchase_type == "泥作"',
+               selectizeInput('Purchase_item', '品項名稱',
+                              choices = unique(NewStock_df$品項),
+                              selected = '',  
+                              options = list(creat = TRUE,
+                                             placeholder = '挑選一個或新增')
+               ) 
+             )
+            
          ),# close div
          br(),
          ## set 數量 input
@@ -50,7 +69,7 @@ fluidPage(
          br(),
          ## set 成本 input
          div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
-             numericInput('Purchase_cost','成本',
+             numericInput('Purchase_cost','成本', # 暫時先沒有考慮進貨的部份
                           value = 0,
                           min = 0,
                           max = Inf)
@@ -59,7 +78,7 @@ fluidPage(
          ## set 品項的單位 input
          div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
              selectizeInput('Purchase_unit', '品項的單位',
-                            choices = '',
+                            choices = '',selected = '',
                             options = list(maxOptions = 5, 
                                            create = TRUE,                         
                                            placeholder = '挑選一個或新增')

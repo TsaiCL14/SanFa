@@ -40,62 +40,208 @@ fluidPage(
                                            placeholder = '挑選一個'))
          ),# close div
          br(),
-         # ## set 品項名稱 input
-         # div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
-         #     selectizeInput('Sale_item', '品項名稱',
-         #                    choices = unique(NewStock_df$品項),
-         #                    selected = '',  
-         #                    options = list(creat = TRUE,
-         #                                   placeholder = '挑選一個或新增')
-         #     ) 
-         # ),# close div
-         # br(),
-         # ## set 數量 input
-         # div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
-         #     numericInput('Sale_quantity', '品項的數量',
-         #                  value = 0,
-         #                  min = 0,
-         #                  max = 10000)
-         # ),# close div
-         
-           div(style = 'display: flex; align-items: center;',
-           # div(style = 'display: inline-block; align-items: center;',
-               div(style = 'flex: 0.5; margin-right: 50%;',
-                   selectizeInput('Sale_item', '品項名稱',
-                                  choices = unique(NewStock_df$品項),
-                                  selected = '',
-                                  options = list(create = TRUE,
-                                                 placeholder = '挑選一個或新增')
-                   )
-               ),
-               div(style = 'flex: 0.5; margin-left:50%;',
-                   numericInput('Sale_quantity', '品項的數量',
-                                value = 0,
-                                min = 0,
-                                max = 10000
-                   )
-               )
+         ### 品項 跟 數量 1
+         fluidRow(
+           column(8,
+                  selectizeInput('Sale_item1', '品項名稱',
+                                 choices = unique(NewStock_df$品項),
+                                 selected = '',
+                                 options = list(create = TRUE,placeholder = '挑選一個或新增'))
            ),
+           column(4,
+                  numericInput('Sale_quantity1', '數量',
+                               value = 0,
+                               min = 0,
+                               max = 10000),
+           )
+         ), # close fluidRow
+         ## 新增的品項跟數量 2 
+         conditionalPanel(
+           condition = paste0('input.Sale_NewItem > 0'),
+           fluidRow(
+             column(8,
+                    selectizeInput('Sale_item2', '品項名稱',
+                                   choices = unique(NewStock_df$品項),
+                                   selected = '',
+                                   options = list(create = TRUE,placeholder = '挑選一個或新增'))
+             ),
+             column(4,
+                    numericInput('Sale_quantity2', '數量',
+                                 value = 0,
+                                 min = 0,
+                                 max = 10000),
+             )
+           ), # close fluidRow
+         ), # close conditionalPanel
+         ## 新增的品項跟數量 3 
+         conditionalPanel(
+           condition = paste0('input.Sale_NewItem > 1'),
+           fluidRow(
+             column(8,
+                    selectizeInput('Sale_item3', '品項名稱',
+                                   choices = unique(NewStock_df$品項),
+                                   selected = '',
+                                   options = list(create = TRUE,placeholder = '挑選一個或新增'))
+             ),
+             column(4,
+                    numericInput('Sale_quantity3', '數量',
+                                 value = 0,
+                                 min = 0,
+                                 max = 10000),
+             )
+           ), # close fluidRow
+         ), # close conditionalPanel
+         ## 新增的品項跟數量 4 
+         conditionalPanel(
+           condition = paste0('input.Sale_NewItem > 2'),
+           fluidRow(
+             column(8,
+                    selectizeInput('Sale_item4', '品項名稱',
+                                   choices = unique(NewStock_df$品項),
+                                   selected = '',
+                                   options = list(create = TRUE,placeholder = '挑選一個或新增'))
+             ),
+             column(4,
+                    numericInput('Sale_quantity4', '數量',
+                                 value = 0,
+                                 min = 0,
+                                 max = 10000),
+             )
+           ), # close fluidRow
+         ), # close conditionalPanel
+         ## 新增的品項跟數量 5 
+         conditionalPanel(
+           condition = paste0('input.Sale_NewItem > 3'),
+           fluidRow(
+             column(8,
+                    selectizeInput('Sale_item5', '品項名稱',
+                                   choices = unique(NewStock_df$品項),
+                                   selected = '',
+                                   options = list(create = TRUE,placeholder = '挑選一個或新增'))
+             ),
+             column(4,
+                    numericInput('Sale_quantity5', '數量',
+                                 value = 0,
+                                 min = 0,
+                                 max = 10000),
+             )
+           ), # close fluidRow
+         ), # close conditionalPanel
+         ## 新增的品項跟數量 6 
+         conditionalPanel(
+           condition = paste0('input.Sale_NewItem > 4'),
+           fluidRow(
+             column(8,
+                    selectizeInput('Sale_item6', '品項名稱',
+                                   choices = unique(NewStock_df$品項),
+                                   selected = '',
+                                   options = list(create = TRUE,placeholder = '挑選一個或新增'))
+             ),
+             column(4,
+                    numericInput('Sale_quantity6', '數量',
+                                 value = 0,
+                                 min = 0,
+                                 max = 10000),
+             )
+           ), # close fluidRow
+         ), # close conditionalPanel
+         ## 新增的品項跟數量 7 
+         conditionalPanel(
+           condition = paste0('input.Sale_NewItem > 5'),
+           fluidRow(
+             column(8,
+                    selectizeInput('Sale_item7', '品項名稱',
+                                   choices = unique(NewStock_df$品項),
+                                   selected = '',
+                                   options = list(create = TRUE,placeholder = '挑選一個或新增'))
+             ),
+             column(4,
+                    numericInput('Sale_quantity7', '數量',
+                                 value = 0,
+                                 min = 0,
+                                 max = 10000),
+             )
+           ), # close fluidRow
+         ), # close conditionalPanel
+         ## 新增的品項跟數量 8 
+         conditionalPanel(
+           condition = paste0('input.Sale_NewItem > 6'),
+           fluidRow(
+             column(8,
+                    selectizeInput('Sale_item8', '品項名稱',
+                                   choices = unique(NewStock_df$品項),
+                                   selected = '',
+                                   options = list(create = TRUE,placeholder = '挑選一個或新增'))
+             ),
+             column(4,
+                    numericInput('Sale_quantity8', '數量',
+                                 value = 0,
+                                 min = 0,
+                                 max = 10000),
+             )
+           ), # close fluidRow
+         ), # close conditionalPanel
+         ## 新增的品項跟數量 9
+         conditionalPanel(
+           condition = paste0('input.Sale_NewItem > 7'),
+           fluidRow(
+             column(8,
+                    selectizeInput('Sale_item9', '品項名稱',
+                                   choices = unique(NewStock_df$品項),
+                                   selected = '',
+                                   options = list(create = TRUE,placeholder = '挑選一個或新增'))
+             ),
+             column(4,
+                    numericInput('Sale_quantity9', '數量',
+                                 value = 0,
+                                 min = 0,
+                                 max = 10000),
+             )
+           ), # close fluidRow
+         ), # close conditionalPanel
+         ## 新增的品項跟數量 10
+         conditionalPanel(
+           condition = paste0('input.Sale_NewItem > 8'),
+           fluidRow(
+             column(8,
+                    selectizeInput('Sale_item10', '品項名稱',
+                                   choices = unique(NewStock_df$品項),
+                                   selected = '',
+                                   options = list(create = TRUE,placeholder = '挑選一個或新增'))
+             ),
+             column(4,
+                    numericInput('Sale_quantity10', '數量',
+                                 value = 0,
+                                 min = 0,
+                                 max = 10000),
+             )
+           ), # close fluidRow
+         ), # close conditionalPanel
+         # 新增的品項的按鈕
+         div(style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',
+             div(style = 'display: inline-block;vertical-align:top;text-align: center; width: 100%;',
+                 actionButton('Sale_NewItem', '新增購買品項', class = 'btn_success')
+             )
+         ),
          
-         br(),
          ## set 備註 input 
          div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
-             textAreaInput('Purchase_remark','備註',
+             textAreaInput('Sale_remark','備註',
                            placeholder = '寫下你想為這個品項紀錄的事項！')
          ),
          br(),
          ## set 上傳按鈕 
          div(style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',
-         div(
-           style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',
-             actionButton('Purchase_go', '上傳資料', class = 'btn_success')
-         ),
-         div(
-           style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',
-             textOutput('Purchase_goText')
-           )
+             div(
+               style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',
+               actionButton('Sale_go', '上傳資料', class = 'btn_success')
+             ),
+             div(
+               style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',
+               textOutput('Sale_goText')
+             )
          )
-         ), # close column
+  ), # close column
   #### column 2 (output)###############
   column(8,
          fluidRow(

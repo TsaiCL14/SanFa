@@ -23,14 +23,16 @@ ui <- fluidPage(
                ),
                tabPanel(title = '品項的價格',
                        source('Rscript/ui/ui_getPrice.R',local = TRUE)$value
-                 
+
                ),
                tabPanel(title = '進貨',
                         source('Rscript/ui/ui_getPurchase.R',local = TRUE)$value
                ),
                tabPanel(title = '出售',
                         source('Rscript/ui/ui_getSale.R',local = TRUE)$value
+                        # source('UFO/testInUI.R',local = TRUE)$value
                )
+               
     ) # navbarPage
   ) # shinyUI
 ) # fluiPage
@@ -41,7 +43,8 @@ ui <- fluidPage(
 ############### server #############
 server <- function(input, output, session){
   source('Rscript/server/server_gerNewStock.R',local = TRUE)$value
-  # source('Rscript/server/server_getPrice.R',local = TRUE)$value
+  source('Rscript/server/server_getPrice.R',local = TRUE)$value
+  source('Rscript/server/server_Purchase.R',local = TRUE)$value
 } # close server 
 
 
