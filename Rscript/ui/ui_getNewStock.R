@@ -20,41 +20,103 @@ fluidPage(
          ## set 品項 input 
          div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
              selectizeInput('NewStock_type', '品項的種類', 
-                            choices = '',
+                            choices = c('泥作','磁磚'),selected = '',
                             options = list(maxOptions = 5, 
                                            create = TRUE,
                                            placeholder = '挑選一個或新增')
-                            ) 
+             ) 
          ),# close div
-         br(),
+         # br(),
          ## set 品項名稱 input
          div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
-             selectizeInput('NewStock_item', '品項的名稱', 
-                            choices = '', 
-                            options = list(maxOptions = 5, 
-                                           create = TRUE,
-                                           placeholder = '新增')
-                            )
+             conditionalPanel(
+               ### 磁磚
+               condition = 'input.NewStock_type == "磁磚"',
+               selectizeInput('NewStock_item_tiles','廠商名稱',
+                              choices = '',selected = '',
+                              options = list(creat = TRUE,
+                                             placeholder = '挑選一個或新增')
+               ),
+               selectizeInput('NewStock_specificaiton_tiles', '規格',
+                              choices = "",
+                              selected = '',
+                              options = list(creat = TRUE,
+                                             placeholder = '挑選一個或新增')
+               ),
+               selectizeInput('NewStock_number_tiles', '編號',
+                              choices = '',
+                              selected = '',
+                              options = list(creat = TRUE,
+                                             placeholder = '挑選一個或新增')
+               )
+             ),
+             ### 泥作
+             conditionalPanel(
+               condition = 'input.NewStock_type == "泥作"',
+               selectizeInput('NewStock_item_cement', '品項名稱',
+                              choices = c(''),
+                              selected = '',  
+                              options = list(creat = TRUE,
+                                             placeholder = '挑選一個或新增')
+               ),
+               selectizeInput('NewStock_specification_cement', '規格',
+                              choices = c(''),
+                              selected = '',  
+                              options = list(creat = TRUE,
+                                             placeholder = '挑選一個或新增')
+               )
+             )
+             
          ),# close div
          br(),
          ## set 數量 input
          div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
-             numericInput('NewStock_quantity', '品項的數量',
-                          value = 0,
-                          min = 0,
-                          max = 10000)
+             conditionalPanel(
+               condition = 'input.NewStock_type == "泥作"',
+               numericInput('NewStock_quantity_cement','數量',
+                            value = 0,
+                            min = 0,
+                            max = 10000)
+             ),
+             conditionalPanel(
+               condition = 'input.NewStock_type == "磁磚"',
+               numericInput('NewStock_quantity_tiles','數量',
+                            value = 0,
+                            min = 0,
+                            max = 10000)
+             )
          ),# close div
          br(),
          ## set 品項的單位 input
          div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
-             selectizeInput('NewStock_unit', '品項的單位',
-                            choices = '',
-                            options = list(maxOptions = 5, 
-                                           create = TRUE,
-                                           placeholder = '挑選一個或新增')
-                            )
+             conditionalPanel(
+               condition = 'input.NewStock_type == "泥作"',
+               selectizeInput('NewStock_unit_cement','單位',
+                              choices = c(''),
+                              selected = '',  
+                              options = list(creat = TRUE,
+                                             placeholder = '挑選一個或新增')
+                              ) # 每一個品項的單位可能都會不同
+             ),
+             conditionalPanel(
+               condition = 'input.NewStock_type == "磁磚"',
+               numericInput('NewStock_boxes_tiles','箱數',
+                            value = 0,
+                            min = 0,
+                            max = Inf),
+               numericInput('NewStock_capacity_tiles','容量',
+                            value = 0,
+                            min = 0,
+                            max = Inf),
+               numericInput('NewStock_piece_tiles','散片',
+                            value = 0,
+                            min = 0,
+                            max = Inf)
+               
+             )
              
          ),# close div
+         br(),
          br(),
          div(
            style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',

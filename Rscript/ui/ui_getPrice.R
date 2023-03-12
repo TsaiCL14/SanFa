@@ -23,10 +23,19 @@ fluidPage(
            ## set 品項名稱 input
            div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
                selectizeInput('StockPrice_item', '品項', 
-                              choices = unique(NewStock_df$品項),
-                              selected = '', 
-                              options = list(creat = TRUE,
-                                             placeholder = '挑選一個或新增'))
+                              choices = c('',unique(NewStock_df$品項)),
+                              selected = "", 
+                              options = list(# creat = TRUE,
+                                             placeholder = '挑選一個'))
+           ),# close div
+           br(),
+           ## set 品項規格 input
+           div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
+               selectizeInput('StockPrice_specification', '規格', 
+                              choices = c(''),
+                              selected = "", 
+                              options = list(# creat = TRUE,
+                                             placeholder = '挑選一個'))
            ),# close div
            br(),
            ## set 售價 input
