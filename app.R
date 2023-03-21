@@ -12,10 +12,11 @@ options(shiny.usecairo = FALSE)
 # options(shiny.usecairo = FALSE) # 讓shiny出現中文用
 
 ### 事前準備####
-
+## 可以考慮使否在這邊先設置資料表格
 ############### UI ###############
 ui <- fluidPage(
   shinyUI(
+    
     # 主頁
     navbarPage(title = "大倉儲", # 首頁左上角的字
                tabPanel(title = '建立一個新的倉庫',
@@ -32,6 +33,9 @@ ui <- fluidPage(
                         source('Rscript/ui/ui_getSale.R',local = TRUE)$value
                         # source('UFO/testInUI.R',local = TRUE)$value
                )
+               # ,
+               # tabPanel(title = 'test',
+               #           source('UFO/testInUI.R',local = TRUE)$value)
                
     ) # navbarPage
   ) # shinyUI
@@ -42,7 +46,7 @@ ui <- fluidPage(
 
 ############### server #############
 server <- function(input, output, session){
-  source('Rscript/server/server_gerNewStock.R',local = TRUE)$value
+  source('Rscript/server/server_getNewStock.R',local = TRUE)$value
   source('Rscript/server/server_getPrice.R',local = TRUE)$value
   source('Rscript/server/server_Purchase.R',local = TRUE)$value
 } # close server 

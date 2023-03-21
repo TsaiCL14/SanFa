@@ -1,7 +1,7 @@
 ### 寫一個function可以用在輸入資料時
 
 # 在按下按鈕的時候會將資料自動的寫入資料表中
-AutoTable <- function(TableName,...){
+AutoTable <- function(TableName,create,...){
   FilePath <- file.path(paste0('data/',TableName,'.rds'))
   doit <- 1
   ## 沒有資料的話就要做一個資料檔出來

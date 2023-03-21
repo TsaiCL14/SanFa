@@ -28,7 +28,7 @@ fluidPage(
          div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
              selectizeInput('Sale_guest','客戶',
                             choices = '外來客', # 需要有一個外來客的選項
-                            options = list(creat = TRUE,
+                            options = list(create = TRUE,
                                            placeholder = '挑選一個'))
          ),# close div
          br(),
@@ -36,7 +36,7 @@ fluidPage(
          div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
              selectizeInput('Sale_location','地點',
                             choices = '', 
-                            options = list(creat = TRUE,
+                            options = list(create = TRUE,
                                            placeholder = '挑選一個'))
          ),# close div
          br(),

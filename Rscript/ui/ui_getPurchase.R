@@ -38,19 +38,19 @@ fluidPage(
                condition = 'input.Purchase_type == "磁磚"',
                selectizeInput('Purchase_item_tiles','廠商名稱',
                               choices = '',selected = '',
-                              options = list(creat = TRUE,
+                              options = list(create = TRUE,
                                              placeholder = '挑選一個或新增')
                               ),
                selectizeInput('Purchase_specificaiton_tiles', '規格',
                               choices = "",
                               selected = '',
-                              options = list(creat = TRUE,
+                              options = list(create = TRUE,
                                              placeholder = '挑選一個或新增')
                               ),
                selectizeInput('Purchase_number_tiles', '編號',
                               choices = '',
                               selected = '',
-                              options = list(creat = TRUE,
+                              options = list(create = TRUE,
                                              placeholder = '挑選一個或新增')
                               )
              ),
@@ -60,13 +60,13 @@ fluidPage(
                selectizeInput('Purchase_item_cement', '品項名稱',
                               choices = c(''),
                               selected = '',  
-                              options = list(creat = TRUE,
+                              options = list(create = TRUE,
                                              placeholder = '挑選一個或新增')
                ),
                selectizeInput('Purchase_specification_cement', '規格',
                               choices = c(''),
                               selected = '',  
-                              options = list(creat = TRUE,
+                              options = list(create = TRUE,
                                              placeholder = '挑選一個或新增')
                )
              )

@@ -25,7 +25,7 @@ fluidPage(
                selectizeInput('StockPrice_item', '品項', 
                               choices = c('',unique(NewStock_df$品項)),
                               selected = "", 
-                              options = list(# creat = TRUE,
+                              options = list(# create = TRUE,
                                              placeholder = '挑選一個'))
            ),# close div
            br(),
@@ -34,7 +34,7 @@ fluidPage(
                selectizeInput('StockPrice_specification', '規格', 
                               choices = c(''),
                               selected = "", 
-                              options = list(# creat = TRUE,
+                              options = list(# create = TRUE,
                                              placeholder = '挑選一個'))
            ),# close div
            br(),
