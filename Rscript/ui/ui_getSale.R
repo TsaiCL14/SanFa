@@ -234,7 +234,7 @@ fluidPage(
          div(style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',
              div(
                style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',
-               actionButton('Sale_go', '上傳資料', class = 'btn_success')
+               actionButton('Sale_go', '上傳資料(更新表格)', class = 'btn_success')
              ),
              div(
                style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',

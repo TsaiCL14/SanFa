@@ -1,6 +1,7 @@
 ## 把得到的所有品項 加入價格的資料
 ## 需要有填寫價格時的時間點
-
+# 已經有 NewStock的資料 
+NewStock_cement <- readRDS('data/NewStock_cement.rds') # 會用到的資料目前只有cement
 ## 要使用的資料是 NewStock
 ## NewStock_df (在ui_getNewStock中有用到，就不再讀了)
 fluidPage(
@@ -23,7 +24,7 @@ fluidPage(
            ## set 品項名稱 input
            div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
                selectizeInput('StockPrice_item', '品項', 
-                              choices = c('',unique(NewStock_df$品項)),
+                              choices = c('',unique(NewStock_cement$品項)),
                               selected = "", 
                               options = list(# create = TRUE,
                                              placeholder = '挑選一個'))
@@ -32,7 +33,7 @@ fluidPage(
            ## set 品項規格 input
            div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
                selectizeInput('StockPrice_specification', '規格', 
-                              choices = c(''),
+                              choices = c('',unique(NewStock_cement$規格)),
                               selected = "", 
                               options = list(# create = TRUE,
                                              placeholder = '挑選一個'))
@@ -65,7 +66,7 @@ fluidPage(
              style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',
              div(
                style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',
-               actionButton('StockPrice_go', '上傳資料', class = 'btn_success')
+               actionButton('StockPrice_go', '上傳資料(更新表格)', class = 'btn_success')
              ),
              div(
                style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',

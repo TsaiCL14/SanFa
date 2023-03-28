@@ -16,20 +16,22 @@ options(shiny.usecairo = FALSE)
 ############### UI ###############
 ui <- fluidPage(
   shinyUI(
-    
     # 主頁
     navbarPage(title = "大倉儲", # 首頁左上角的字
-               tabPanel(title = '建立一個新的倉庫',
-                       source("Rscript/ui/ui_getNewStock.R",local = TRUE)$value
-               ),
-               tabPanel(title = '品項的價格',
-                       source('Rscript/ui/ui_getPrice.R',local = TRUE)$value
-
-               ),
+               # 
+               navbarMenu('後台',
+                 tabPanel(title = '建立一個新的倉庫',
+                          source("Rscript/ui/ui_getNewStock.R",local = TRUE)$value
+                 ),
+                 tabPanel(title = '品項的價格',
+                          source('Rscript/ui/ui_getPrice.R',local = TRUE)$value
+                          
+                 )
+               ), # close navbarMenu
                tabPanel(title = '進貨',
                         source('Rscript/ui/ui_getPurchase.R',local = TRUE)$value
                ),
-               tabPanel(title = '出售',
+               tabPanel(title = '銷售',
                         source('Rscript/ui/ui_getSale.R',local = TRUE)$value
                         # source('UFO/testInUI.R',local = TRUE)$value
                )

@@ -31,100 +31,62 @@ fluidPage(
              ) 
          ),# close div
          # br(),
-         ## set 品項名稱 input
+         ## 第一個conditionPanel
          div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
-             conditionalPanel(
-               ### 磁磚
-               condition = 'input.Purchase_type == "磁磚"',
-               selectizeInput('Purchase_item_tiles','廠商名稱',
-                              choices = '',selected = '',
-                              options = list(create = TRUE,
-                                             placeholder = '挑選一個或新增')
-                              ),
-               selectizeInput('Purchase_specificaiton_tiles', '規格',
-                              choices = "",
-                              selected = '',
-                              options = list(create = TRUE,
-                                             placeholder = '挑選一個或新增')
-                              ),
-               selectizeInput('Purchase_number_tiles', '編號',
-                              choices = '',
-                              selected = '',
-                              options = list(create = TRUE,
-                                             placeholder = '挑選一個或新增')
-                              )
-             ),
-             ### 泥作
              conditionalPanel(
                condition = 'input.Purchase_type == "泥作"',
                selectizeInput('Purchase_item_cement', '品項名稱',
                               choices = c(''),
-                              selected = '',  
                               options = list(create = TRUE,
+                                             maxOptions = 1000,
                                              placeholder = '挑選一個或新增')
                ),
                selectizeInput('Purchase_specification_cement', '規格',
                               choices = c(''),
-                              selected = '',  
                               options = list(create = TRUE,
+                                             maxOptions = 1000,
                                              placeholder = '挑選一個或新增')
-               )
-             )
-            
-         ),# close div
-         br(),
-         ## set 數量 input
-         div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
-             conditionalPanel(
-              condition = 'input.Purchase_type == "泥作"',
-              numericInput('Purchase_quantity_cement','數量',
-                           value = 0,
-                           min = 0,
-                           max = 10000)
-             ),
-             conditionalPanel(
-              condition = 'input.Purchase_type == "磁磚"',
-              numericInput('Purchase_quantity_tiles','數量',
-                           value = 0,
-                           min = 0,
-                           max = 10000)
-             )
-         ),# close div
-         br(),
-         ## set 成本 input # 暫時先不需要
-         # div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
-         #     conditionalPanel(
-         #       condition = 'input.Purchase_type == "泥作"',
-         #       numericInput('Purchase_cost_cement','成本',
-         #                    value = 0,
-         #                    min = 0,
-         #                    max = 10000)
-         #     ),
-         #     conditionalPanel(
-         #       condition = 'input.Purchase_type == "磁磚"',
-         #       numericInput('Purchase_cost_tiles','成本',
-         #                    value = 0,
-         #                    min = 0,
-         #                    max = 10000)
-         #     )
-         # ),# close div
-         # br(),
-         ## set 品項的單位 input
-         div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
-             conditionalPanel(
-               condition = 'input.Purchase_type == "泥作"',
-               numericInput('Purchase_unit_cement','單位',
+               ),
+               numericInput('Purchase_quantity_cement','數量',
                             value = 0,
                             min = 0,
-                            max = Inf)
-             ),
+                            max = 10000),
+               selectizeInput('Purchase_unit_cement','單位',
+                              choices = c(''),
+                              options = list(create = TRUE,
+                                             maxOptions = 1000,
+                                             placeholder = '挑選一個或新增'
+                              )
+               ) # 每一個品項的單位可能都會不同
+             ), # close conditionalPanel
              conditionalPanel(
                condition = 'input.Purchase_type == "磁磚"',
+               selectizeInput('Purchase_item_tiles','廠商名稱',
+                              choices = c(""),
+                              options = list(create = TRUE,
+                                             maxOptions = 1000,
+                                             placeholder = '挑選一個或新增'
+                              )
+               ), # close selectizeInput
+               selectizeInput('Purchase_specificaiton_tiles', '規格',
+                              choices = c(""),
+                              options = list(create = TRUE,
+                                             maxOptions = 1000,
+                                             placeholder = '挑選一個或新增'
+                              )
+               ), # close selectizeInput
+               selectizeInput('Purchase_number_tiles', '編號',
+                              choices = c(''),
+                              options = list(create = TRUE,
+                                             maxOptions = 1000,
+                                             placeholder = '挑選一個或新增'
+                              )
+               ),# close selectizeInput 
                numericInput('Purchase_boxes_tiles','箱數',
                             value = 0,
                             min = 0,
                             max = Inf),
-               numericInput('Purchase_capacity_tiles','容量',
+               numericInput('Purchase_capacity_tiles','容量(幾入)',
                             value = 0,
                             min = 0,
                             max = Inf),
@@ -132,10 +94,8 @@ fluidPage(
                             value = 0,
                             min = 0,
                             max = Inf)
-               
-             )
-             
-         ),# close div
+             )# close conditionalPanel
+         ), # close div
          br(),
          ## set 備註 input 
          div(style = 'display: inline-block;vertical-align:top;text-align:left; width: 100%;',
@@ -145,7 +105,7 @@ fluidPage(
          br(),
          div(style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',
            div(style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',
-               actionButton('Purchase_go', '上傳資料', class = 'btn_success')
+               actionButton('Purchase_go', '上傳資料(更新表格)', class = 'btn_success')
                ),
            div(style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',
              textOutput('Purchase_goText')

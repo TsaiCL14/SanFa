@@ -74,16 +74,12 @@ fluidPage(
                                              maxOptions = 1000,
                                              placeholder = '挑選一個或新增'
                               )
-               ),# close selectizeInput
-               numericInput('NewStock_quantity_tiles','數量',
-                            value = 0,
-                            min = 0,
-                            max = 10000),
+               ),# close selectizeInput 
                numericInput('NewStock_boxes_tiles','箱數',
                             value = 0,
                             min = 0,
                             max = Inf),
-               numericInput('NewStock_capacity_tiles','容量',
+               numericInput('NewStock_capacity_tiles','容量(幾入)',
                             value = 0,
                             min = 0,
                             max = Inf),
@@ -99,7 +95,7 @@ fluidPage(
            style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',
            div(
              style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',
-             actionButton('NewStock_go', '上傳資料', class = 'btn_success')
+             actionButton('NewStock_go', '上傳資料(更新表格)', class = 'btn_success')
            ),
            div(
              style = 'display: inline-block; vertical-align: top; text-align: center; margin: auto; width: 100%;',
